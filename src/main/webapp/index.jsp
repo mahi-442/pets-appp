@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2 style="color:black">Thank you Reddy Maheswar!</h2>
+<h1 style="color:red">Thank you Reddy Maheswar!</h1>
 </body>
 </html>
