@@ -15,7 +15,7 @@ pipeline{
 			nexusArtifactUploader artifacts: [[artifactId: 'pets-app', classifier: '', file: 'target/pets-app.war', type: 'war']], 
 					credentialsId: 'nexus3', 
 					groupId: 'in.javahome', 
-					nexusUrl: '172.31.6.101:8081', 
+					nexusUrl: '172.31.28.132:8081', 
 					nexusVersion: 'nexus3', 
 					protocol: 'http', 
 					repository: 'pets-app-snapshot', 
