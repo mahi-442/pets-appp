@@ -16,17 +16,6 @@
     </dependency>
   </dependencies>
   
-  	<distributionManagement>
-		 <snapshotRepository>
-		    <id>nexusRepo</id>
-		    <url>http://35.183.107.28:8081/repository/pets-app-snapshot/</url>
-		 </snapshotRepository>
-		
-		<repository>
-		    <id>nexusRepo</id>
-		    <url>http://35.183.107.28:8081/repository/pets-app-release/</url>
-		</repository>
-  	</distributionManagement>
   <build>
     <finalName>pets-app</finalName>
   </build>
