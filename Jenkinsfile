@@ -11,6 +11,7 @@ pipeline{
 		
 	    }
 		stage('nexus deploy'){
+			steps{
 			nexusArtifactUploader artifacts: [[artifactId: 'pets-appp', classifier: '', file: 'target/pets-app.war', type: 'war']], 
 					credentialsId: 'nexus3', 
 					groupId: 'in.javahome', 
@@ -19,6 +20,7 @@ pipeline{
 					protocol: 'http', 
 					repository: 'pets-app-snapshot', 
 					version: '1.0-SNAPSHOT'
+			}
 		}
 	}
 }
