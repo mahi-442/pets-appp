@@ -12,7 +12,7 @@ pipeline{
 	    }
 		stage('nexus deploy'){
 			steps{
-				scripts{
+				script{
 					def pomfile = readMavenPom file: 'pom.xml'
 			     	def version = pomfile.version
 					def nexusRepo = version.endswith("SNAPSHOT") ? "pets-app-snapshot" : "pets-app-release"
