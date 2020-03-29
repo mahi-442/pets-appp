@@ -22,7 +22,7 @@ pipeline{
 						nexusUrl: '172.31.28.132:8081', 
 						nexusVersion: 'nexus3', 
 						protocol: 'http', 
-						repository: 'pets-app-snapshot', 
+						repository: nexusRepo, 
 						version: version
 				}
 			}
