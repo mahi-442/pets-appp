@@ -12,14 +12,19 @@ pipeline{
 	    }
 		stage('nexus deploy'){
 			steps{
-			nexusArtifactUploader artifacts: [[artifactId: 'pets-app', classifier: '', file: 'target/pets-app.war', type: 'war']], 
-					credentialsId: 'nexus3', 
-					groupId: 'in.javahome', 
-					nexusUrl: '172.31.28.132:8081', 
-					nexusVersion: 'nexus3', 
-					protocol: 'http', 
-					repository: 'pets-app-snapshot', 
-					version: '1.0-SNAPSHOT'
+				scripts{
+					def pomfile = readMavenPom file: 'pom.xml'
+			     	def version = pomfile.version
+					def nexusRepo = version.endswith("SNAPSHOT") ? "pets-app-snapshot" : "pets-app-release"
+					nexusArtifactUploader artifacts: [[artifactId: 'pets-app', classifier: '', file: 'target/pets-app.war', type: 'war']], 
+						credentialsId: 'nexus3', 
+						groupId: 'in.javahome', 
+						nexusUrl: '172.31.28.132:8081', 
+						nexusVersion: 'nexus3', 
+						protocol: 'http', 
+						repository: 'pets-app-snapshot', 
+						version: version
+				}
 			}
 		}
 	}
