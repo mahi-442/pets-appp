@@ -33,7 +33,7 @@ pipeline{
 			steps{
 				sshagent(['tomcat-devv']) {
 					//to copy war file to tomcat webapps
-					sh "scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.28.41:/opt/tomcat8/webapps/pets-app"
+					sh "scp -o StrictHostKeyChecking=no target/*.war ec2-user@35.183.99.78:/opt/tomcat8/webapps/pets-app"
 					//start and stop tomcat
 					sh "ssh ec2-user@172.31.28.41/opt/tomcat8/bin/shutdown.sh"
 					sh "ssh ec2-user@172.31.28.41/opt/tomcat8/bin/startup.sh"
