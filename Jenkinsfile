@@ -28,7 +28,7 @@ pipeline{
 			}
 		}
 
-		stage('Maven build/package'){
+		stage('Deploy-Tomcat'){
 
 			steps{
 				sshagent(['tomcat-devv']) {
