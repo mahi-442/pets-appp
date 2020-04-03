@@ -37,4 +37,18 @@ pipeline{
 			}
 		}	
 	}
+
+	post {
+  		success {
+    		// Send success message.
+			mail bcc: '', body: '''Hi Team,
+The build completed successfully.
+Thanks,
+DevOps Team.''', 
+				subject: 'BUILD - SUCCESS', to: '9618714521m@gmail.com'
+  		}
+  		failure {
+    		// Send failure message.
+  		}
+}
 }
