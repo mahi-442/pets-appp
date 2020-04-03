@@ -49,6 +49,11 @@ DevOps Team.''',
   		}
   		failure {
     		// Send failure message.
+			mail bcc: '', body: '''Hi Team,
+The build Failed.
+Thanks,
+DevOps Team.''', 
+				subject: 'BUILD - FAILED', to: '9618714521m@gmail.com'
   		}
 }
 }
