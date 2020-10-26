@@ -17,7 +17,7 @@ pipeline{
         }
         stage('Nexus Deploy'){
             steps{
-                scripts{
+                script{
                     def pomfile = readMavenPom file: 'pom.xml'
                     def version = pomfile.version
                     def nexusrepo = version.endswith("SNAPSHOT") ? "HUE-snapshot" : "HUE-Release"
