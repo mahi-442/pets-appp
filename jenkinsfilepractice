@@ -34,10 +34,10 @@ pipeline{
         }
         stage('Deploy on Tomcat'){
             steps{
-                sshagent(['Tomcat']){
-                    sh "scp target/*war ec2-user@172.31.25.223: /opt/tomcat8/webapps/pets-app
-                    sh "ssh ec2-user@172.31.25.223 /opt/tomcat8/bin/shutdowon.sh
-                    sh "ssh ec2-user@172.31.25.223 /opt/tomcat8/bin.startup.sh
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'tomcat-dev', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''/opt/tomcat8/bin/shutdown.sh
+/opt/tomcat8/bin/startup.sh
+''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/*war'), sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+
                 }
             }
         }
