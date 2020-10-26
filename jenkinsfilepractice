@@ -10,7 +10,10 @@ pipeline{
             }
         }
         stage('Maven Build/Package'){
-            sh 'mvn clean package'
+            steps{
+                sh 'mvn clean package'
+            }
+            
         }
         stage('Nexus Deploy'){
             steps{
