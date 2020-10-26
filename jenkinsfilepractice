@@ -32,6 +32,15 @@ pipeline{
                 }
             }
         }
+        stage('Deploy on Tomcat){
+            steps{
+                sshagent(['Tomcat']) {
+                    sh "scp target/*war ec2-user@172.31.25.223: /opt/tomcat8/webapps/HUE
+                    sh "ssh ec2-user@172.31.25.223 /opt/tomcat8/bin/shutdowon.sh
+                    sh "ssh ec2-user@172.31.25.223 /opt/tomcat8/bin.startup.sh
+                }
+            }
+        }
 
     }
 }
