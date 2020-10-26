@@ -1,10 +1,16 @@
 pipeline{
     agent any
+    tools {
+        maven 'maven3'
+    }
     stages{
         stage('Git Checkout'){
             steps{
                 git credentialsId: 'github2', url: 'https://github.com/mahi-442/pets-appp'
             }
+        }
+        stage('Maven Build/Package'){
+            sh 'mvn clean package'
         }
     }
 }
