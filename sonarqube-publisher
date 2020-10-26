@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    tools {
+        maven 'Maven3'
+    }
+    stages{
+        stage('Git Checkout'){
+            steps{
+                git url: 'https://github.com/javahometech/pets-app'
+            }
+        }
+        stage('Publish To SonarQube'){
+            steps{
+                withSonarQubeEnv('sonar7') {
+                  sh 'mvn clean package sonar:sonar'
+                }
+            }
+        }
+    }
+}
