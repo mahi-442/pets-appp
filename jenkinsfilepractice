@@ -20,7 +20,7 @@ pipeline{
                 script{
                     def pomfile = readMavenPom file: 'pom.xml'
                     def version = pomfile.version
-                    def nexusrepo = version.endswith("SNAPSHOT") ? "HUE-snapshot" : "HUE-Release"
+                    def nexusrepo = version.endsWith("SNAPSHOT") ? "HUE-snapshot" : "HUE-Release"
                     nexusArtifactUploader artifacts: [[artifactId: 'pets-app', classifier: '', file: 'target/pets-app.war', type: 'war']], 
                     credentialsId: 'Nexus3', 
                     groupId: 'in.javahome', 
