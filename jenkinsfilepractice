@@ -1,0 +1,10 @@
+pipeline{
+    agent any
+    stages{
+        stage('Git Checkout'){
+            steps{
+                git credentialsId: 'github2', url: 'https://github.com/mahi-442/pets-appp'
+            }
+        }
+    }
+}
