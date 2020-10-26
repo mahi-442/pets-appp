@@ -17,12 +17,16 @@ pipeline{
         }
         stage('Nexus Deploy'){
             steps{
+                def pomfile = readMavenPom file: 'pom.xml'
+                def version = pomfile.version
+                def nexusrepo = version.endswith("SNAPSHOT") ? "HUE-snapshot" : "HUE-Release"
                 nexusArtifactUploader artifacts: [[artifactId: 'pets-app', classifier: '', file: 'target/pets-app.war', type: 'war']], 
                 credentialsId: 'Nexus3', 
                 groupId: 'in.javahome', 
                 nexusUrl: '18.222.202.213:8081/', 
-                nexusVersion: 'nexus3', protocol: 'http', 
-                repository: 'HUE-Release', 
+                nexusVersion: 'nexus3', 
+                protocol: 'http', 
+                repository: nexusrepo , 
                 version: '3.0-RELEASE'
             }
         }
