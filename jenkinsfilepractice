@@ -12,5 +12,17 @@ pipeline{
         stage('Maven Build/Package'){
             sh 'mvn clean package'
         }
+        stage('Nexus Deploy'){
+            steps{
+                nexusArtifactUploader artifacts: [[artifactId: 'pets-app', classifier: '', file: 'target/pets-app.war', type: 'war']], 
+                credentialsId: 'Nexus3', 
+                groupId: 'in.javahome', 
+                nexusUrl: '18.222.202.213:8081/', 
+                nexusVersion: 'nexus3', protocol: 'http', 
+                repository: 'HUE-Release', 
+                version: '3.0-RELEASE'
+            }
+        }
+
     }
 }
