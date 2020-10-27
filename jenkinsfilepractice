@@ -41,7 +41,7 @@ pipeline{
         
     }
     post{
-            success{
+        success{
                 mail bcc: '', 
                 body: '''Hi Team,
 
@@ -51,8 +51,8 @@ pipeline{
                 DevOps Team.
                 ''', 
                 cc: '9618714521m@gmail.com', from: '', replyTo: '', subject: 'Build - Success', to: '9618714521m@gmail.com'
-            }
-            failure{
+        }
+        failure{
                 mail bcc: '', 
                 body: '''Hi Team,
 
@@ -63,7 +63,7 @@ pipeline{
                 ''', 
                 cc: '9618714521m@gmail.com', from: '', replyTo: '', subject: 'Build - Faild', to: '9618714521m@gmail.com'
                 
-            }
         }
+    }
 
 }
