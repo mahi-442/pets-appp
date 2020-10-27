@@ -38,6 +38,31 @@ pipeline{
 /opt/tomcat8/bin/startup.sh''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/*war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
             }
         }
+        post{
+            success{
+                mail bcc: '', 
+                body: '''Hi Team,
+
+                The build completed successfully
+
+                Thanks,
+                DevOps Team.
+                ''', 
+                cc: '9618714521m@gmail.com', from: '', replyTo: '', subject: 'Build - Success', to: '9618714521m@gmail.com'
+            }
+            failure{
+                mail bcc: '', 
+                body: '''Hi Team,
+
+                The build is failed.
+
+                Thanks,
+                DevOps Team.
+                ''', 
+                cc: '9618714521m@gmail.com', from: '', replyTo: '', subject: 'Build - Faild', to: '9618714521m@gmail.com'
+                
+            }
+        }
 
     }
 }
