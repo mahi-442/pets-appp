@@ -2,10 +2,18 @@ pipeline {
     agent {
         label 'slave-one'
     }
+    tools {
+        maven 'maven3'
+    }
     stages {
         stage('Slave-Demo') {
             steps {
                 echo "welcome to Jenkins"
+            }
+        }
+        stage('Maven Build') {
+            steps {
+                sh "mvn clean package"
             }
         }
                
