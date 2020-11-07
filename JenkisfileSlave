@@ -1,0 +1,14 @@
+pipeline {
+    agent {
+        label 'slave-one'
+    }
+    stages {
+        stage('Slave-Demo') {
+            steps {
+                echo "welcome to Jenkins"
+            }
+        }
+               
+    }
+
+}
